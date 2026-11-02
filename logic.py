@@ -9,6 +9,7 @@ def process(photo):
     k = 0.7
     photo = photo.resize((int(photo.width * k), int(photo.height * k)))
     remove(photo, session=session)
+    photo = photo.convert("RGBA")
     x_cord_photo = (background.width - photo.width) // 2
     y_cord_photo = (background.height - photo.height) // 2
     background.paste(photo, (x_cord_photo, y_cord_photo), photo)
