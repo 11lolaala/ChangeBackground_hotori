@@ -1,12 +1,14 @@
-from rembg import remove
+from rembg import remove, new_session
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
+session = new_session("silueta")
 
 def process(photo):
     background = Image.open('backk2.jpg')
     background = background.filter(ImageFilter.GaussianBlur(3))
     k = 0.7
     photo = photo.resize((int(photo.width * k), int(photo.height * k)))
-    photo = remove(photo)
+    remove(photo, session=session)
     x_cord_photo = (background.width - photo.width) // 2
     y_cord_photo = (background.height - photo.height) // 2
     background.paste(photo, (x_cord_photo, y_cord_photo), photo)
