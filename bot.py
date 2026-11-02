@@ -76,6 +76,7 @@ async def process_one(msg):
         return out.getvalue()
     except Exception as e:
         print(f"Ошибка в process_one: {e}")
+        await msg.answer(f"Ошибка: {e}")
 
 
 async def main():
